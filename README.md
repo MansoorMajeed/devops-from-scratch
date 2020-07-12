@@ -1,6 +1,7 @@
 # DevOps From Scratch
 
 A video series for beginners
+Playlist is [HERE](https://www.youtube.com/playlist?list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14)
 
 ## RoadMap
 
