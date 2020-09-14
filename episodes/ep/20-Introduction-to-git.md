@@ -26,8 +26,8 @@ Version control simply means keeping track of changes to your projects as it gro
 
 ## Git vs GitHub
 
-Git is the open source tool  
-Github is an online web based "git" hosting service
+- Git is the open source tool  
+- Github is an online web based "git" hosting service
 
 ## Personal Advices
 
@@ -71,22 +71,22 @@ git config --global user.email "m@esc.sh"
 
 ## Very Basics 
 
-`git init` - Initializes a local repository
+- `git init` - Initializes a local repository
 Means, the current directory is under git now. 
 
 Look at `ls -la .git` and you can see where the git magic happens
 
-`git status` - Shows the current status of the repo
+- `git status` - Shows the current status of the repo
 
 ### Staging changes - `git add`
 
 **Create a new file** and use `git add <filename>` to add it to **staging area**
 
 
-`git add .` - add the current directory
-`git add directory/another` - Add a specific directory to staging
-`git add *.py` - add all .py files
-`git add f*` - Add everything starting with `f`.
+- `git add .` - add the current directory
+- `git add directory/another` - Add a specific directory to staging
+- `git add *.py` - add all .py files
+- `git add f*` - Add everything starting with `f`.
 
 You get the idea
 
@@ -95,14 +95,14 @@ You get the idea
 **Commiting** means to commit to the change you just made. Meaning git will store
 this change in it's magic storage (`.git` directory)
 
-`git commit` - Opens the editor (set by the $EDITOR environment variable - You can change it
+- `git commit` - Opens the editor (set by the $EDITOR environment variable - You can change it
 using `export EDITOR=editor_name`) where you can write a commit message
 
 **Commit message** is what will be recorded as a message identifier for your change
 
-`git commit -v` - Does the same thing as above, but shows the changes too, in the editor
+- `git commit -v` - Does the same thing as above, but shows the changes too, in the editor
 
-`git commit -m "A beatuful short description of the changes"` - Commits instantly with that message
+- `git commit -m "A beatuful short description of the changes"` - Commits instantly with that message
 
 
 > Why do we need staging area?
@@ -125,9 +125,9 @@ This will ignore `foobar` and `cache` from being stored in git
 
 ### Viewing the history of changes - `git log`
 
-`git log` - View all the commits in the current repository
-`git log -p` - View all the commits and the changes
-`git log -p <filename/folder>` - Show changes, but for the file/folder
+- `git log` - View all the commits in the current repository
+- `git log -p` - View all the commits and the changes
+- `git log -p <filename/folder>` - Show changes, but for the file/folder
 
 
 ### Viewing what change you just made - `git diff`
@@ -152,9 +152,9 @@ feature
 
 > Branches do not know of the changes in each other until you merge them
 
-`git branch` - Shows the current branch
-`git checkout <branchname>` - Switches to branchname
-`git checkout -b <branchname>` - Create a new branch "branchname" and switches to it
+- `git branch` - Shows the current branch
+- `git checkout <branchname>` - Switches to branchname
+- `git checkout -b <branchname>` - Create a new branch "branchname" and switches to it
 
 > Note: When working on a new feature, we usually do `git checkout -b featurename` from 
 > the `master` branch
