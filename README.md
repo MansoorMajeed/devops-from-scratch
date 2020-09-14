@@ -4,8 +4,8 @@ A video series for beginners
 Playlist is [HERE](https://www.youtube.com/playlist?list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14)
 
 
-Episode specific notes, excercises etc are [HERE](episodes). I will add notes, exercises I think
-will be useful to you. I may make videos about them in future. Let me know if anyone would like that.
+## Notes and other resources
+Episode specific notes, excercises etc are [HERE](episodes). 
 
 
 > This roadmap needs rewriting and needs to organize it better
