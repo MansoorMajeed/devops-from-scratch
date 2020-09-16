@@ -7,3 +7,5 @@
 [3. File Descriptors, Standard output/error, Pipe, Grep, File system hierarchy](ep/5-file-descriptors-standard-out-err-pipe-file-system.md)
 
 [19. Managing VirtualMachines using Vagrant](ep/19-vagrant-intro.md)  
+
+[20. Introduction to Git and Gitlab](ep/20-Introduction-to-git.md)
