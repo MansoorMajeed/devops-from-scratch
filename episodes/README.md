@@ -8,4 +8,4 @@
 
 [19. Managing VirtualMachines using Vagrant](ep/19-vagrant-intro.md)  
 
-[20. Introduction to Git and Gitlab](ep/20-Introduction-to-git.md)
+[20. Introduction to Git](ep/20-Introduction-to-git.md)
