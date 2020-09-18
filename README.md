@@ -14,7 +14,7 @@ You can open an issue if you have something to discuss
 
 [1. How does the internet work](episodes/1-how-does-the-internet-work.md)
 
-    [1.1 Short term Roadmap : Path to setting up a simple website](episodes/1.1-short-term-roadmap.md)
+[1.1 Short term Roadmap : Path to setting up a simple website](episodes/1.1-short-term-roadmap.md)
 
 [2. History of Unix, Linux, Installing Debian 10 on Virtualbox](episodes/2-unix-linux-installing-debian-10-on-virtualbox.md)
 
