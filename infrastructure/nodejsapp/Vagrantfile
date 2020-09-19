@@ -1,0 +1,20 @@
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "debian/buster64"
+
+
+  config.vm.define "nodejsapp" do |nodejsapp|
+    nodejsapp.vm.provider "virtualbox" do |vb|
+       vb.memory = "512"
+    end
+
+    nodejsapp.vm.network "private_network", ip: "192.168.33.10"
+    nodejsapp.vm.hostname = 'nodejsapp'
+
+    nodejsapp.vm.provision "shell", inline: <<-SHELL
+	echo "demo provisioning"
+    SHELL
+  end
+
+
+end
