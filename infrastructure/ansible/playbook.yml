@@ -1,10 +1,17 @@
 ---
-- hosts: nodejsapp
+- hosts: nodejsapp-frontend
   remote_user: vagrant
   become: yes
 
   roles:
     - common
     - nginx-common
+    - nginx-nodejsapp
+
+- hosts: nodejsapp-backend
+  remote_user: vagrant
+  become: yes
+
+  roles:
+    - common
     - nodejs-common
-    - nodejsapp

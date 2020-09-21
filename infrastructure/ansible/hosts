@@ -1,2 +1,7 @@
-[nodejsapp]
+[nodejsapp-frontend]
 nodejs.devops.esc.sh
+
+
+[nodejsapp-backend]
+192.168.33.11
+192.168.33.12
