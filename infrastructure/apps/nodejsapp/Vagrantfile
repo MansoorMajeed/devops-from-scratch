@@ -3,17 +3,49 @@ Vagrant.configure("2") do |config|
   config.vm.box = "debian/buster64"
 
 
-  config.vm.define "nodejsapp" do |nodejsapp|
-    nodejsapp.vm.provider "virtualbox" do |vb|
+  config.vm.define "nodejsapp_nginx" do |nodejsapp_nginx|
+    nodejsapp_nginx.vm.provider "virtualbox" do |vb|
        vb.memory = "512"
     end
 
-    nodejsapp.vm.network "private_network", ip: "192.168.33.10"
-    nodejsapp.vm.hostname = 'nodejsapp'
+    nodejsapp_nginx.vm.network "private_network", ip: "192.168.33.10"
+    nodejsapp_nginx.vm.hostname = 'nodejsapp-nginx'
 
-    nodejsapp.vm.provision "shell", inline: <<-SHELL
+    nodejsapp_nginx.vm.provision "shell", inline: <<-SHELL
       echo "Adding SSH Key"
-      echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDfCBY+TLum3jj9JRLDRapUqSA8syXQIYSTDtuJhfE3BggraUyNt7IYKEPxSOy0DWZ4Kes5KEwYD/jYF5F65811tTcHnCcqQ7FzK471eRuKBaPudbLA1QdLXoJlVsEkjrDUC6iO23XfJUv22KtBbSlfNjm4gowPdk2O9HwDM+kV/ECHz0f82n2mp7hbgPNB/aNH+xOB+GjwO7tcm3ji+g2CKK6v+n/JlTuSK2c8elZVohW9vouxsByVNaNcqxpJ3f5u6mP0Dy8Px8T17nQtD+S0QKWJ4gIjebGE9C25nhFkGVUdiTZPqOiLplUKjzRm4ksAsB4EHJ5faUtirDD5I9XImWf8BUjBs9NkwqY2qXeomgdjI33zhOoXJ6y3feU92Gx+Q6+ybvGQBo558dmUTkk7Qdm2r8peTOZk47xbBI6bgeYZ3aVIAsT0If6E2dLPErzCn/6RPlaEZXwsDUM09Rex6EnJwhGhJPAmL4doIkeoMuGvhGqONTjn1Ohq7zj/5xM=' >> /home/vagrant/.ssh/authorized_keys
+      echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA5Xv55ZTwhBiXvTpsLUyrIghNs1wudPGLDeJ5pUTingJwwPizczSNwui+1FYKRs0UGjAGruUHYboiUOhJ37DZIWWJR8wKg10b+V/Uxv3b0xbV87dd7suZiUgPnK7y24IyCfelGD//dRmePQVbaszcOhctJyeJNgKigqc0MUEYaJWBQPfwN6TuBBSMsX4eDvdjJ0WQYCCzXU0SScZnwxtyozstizA+AzzsWmcZsXzfkNsxgNtKwLNTJ3z8/IQZlVIMt9RyRIF7U8EuuPfRYsmm63KIU2keBSvNb/02m4MDitvu3WXI7UdidXBYdwU0LZiuHGXRAsSILvPIAJv1zQYT' >> /home/vagrant/.ssh/authorized_keys
     SHELL
   end
+
+  config.vm.define "nodejsapp_backend_1" do |nodejsapp_backend_1|
+    nodejsapp_backend_1.vm.provider "virtualbox" do |vb|
+       vb.memory = "512"
+    end
+
+    nodejsapp_backend_1.vm.network "private_network", ip: "192.168.33.11"
+    nodejsapp_backend_1.vm.hostname = 'nodejsapp-backend-1'
+
+    nodejsapp_backend_1.vm.provision "shell", inline: <<-SHELL
+      echo "Adding SSH Key"
+      echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA5Xv55ZTwhBiXvTpsLUyrIghNs1wudPGLDeJ5pUTingJwwPizczSNwui+1FYKRs0UGjAGruUHYboiUOhJ37DZIWWJR8wKg10b+V/Uxv3b0xbV87dd7suZiUgPnK7y24IyCfelGD//dRmePQVbaszcOhctJyeJNgKigqc0MUEYaJWBQPfwN6TuBBSMsX4eDvdjJ0WQYCCzXU0SScZnwxtyozstizA+AzzsWmcZsXzfkNsxgNtKwLNTJ3z8/IQZlVIMt9RyRIF7U8EuuPfRYsmm63KIU2keBSvNb/02m4MDitvu3WXI7UdidXBYdwU0LZiuHGXRAsSILvPIAJv1zQYT' >> /home/vagrant/.ssh/authorized_keys
+    SHELL
+  end
+
+
+    
+  config.vm.define "nodejsapp_backend_2" do |nodejsapp_backend_2|
+    nodejsapp_backend_2.vm.provider "virtualbox" do |vb|
+       vb.memory = "512"
+    end
+
+    nodejsapp_backend_2.vm.network "private_network", ip: "192.168.33.12"
+    nodejsapp_backend_2.vm.hostname = 'nodejsapp-backend-2'
+
+    nodejsapp_backend_2.vm.provision "shell", inline: <<-SHELL
+      echo "Adding SSH Key"
+      echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA5Xv55ZTwhBiXvTpsLUyrIghNs1wudPGLDeJ5pUTingJwwPizczSNwui+1FYKRs0UGjAGruUHYboiUOhJ37DZIWWJR8wKg10b+V/Uxv3b0xbV87dd7suZiUgPnK7y24IyCfelGD//dRmePQVbaszcOhctJyeJNgKigqc0MUEYaJWBQPfwN6TuBBSMsX4eDvdjJ0WQYCCzXU0SScZnwxtyozstizA+AzzsWmcZsXzfkNsxgNtKwLNTJ3z8/IQZlVIMt9RyRIF7U8EuuPfRYsmm63KIU2keBSvNb/02m4MDitvu3WXI7UdidXBYdwU0LZiuHGXRAsSILvPIAJv1zQYT' >> /home/vagrant/.ssh/authorized_keys
+    SHELL
+  end
+
+
 end
