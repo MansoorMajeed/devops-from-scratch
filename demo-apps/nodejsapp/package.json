@@ -1,0 +1,14 @@
+{
+  "name": "nodejsapp",
+  "version": "1.0.0",
+  "description": "Using express to give an idea of using nodejs with modules and how the deployment process looks like",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
