@@ -3,10 +3,11 @@
 We are going to setup a local Git server.
 The idea is similar even if you are using a cloud provider.
 
-**Vagrant** will be used to provision the VM. Vagrantfile is [HERE]()
+**Vagrant** will be used to provision the VM. Vagrantfile is [HERE](infrastructure/vagrant/apps/git-server/Vagrantfile)
 **Ansible** will be used to fully automate the management of the git server.
-Ansible files are [HERE]()
+Ansible files are [HERE](infrastructure/ansible)
 
+The git-server specific role which has all the stuff needed for the git server is [HERE](infrastructure/ansible/roles/git-server)
 
 ## Steps for manually doing it
 
@@ -26,4 +27,3 @@ It's pretty simple.
 	- Manage SSH keys to give access to the repo
 	- Manage repositories
 3. Make a prettier DNS address for the git server
-
