@@ -1,0 +1,12 @@
+---
+- name: Create document root
+  file:
+    path: "{{ docroot }}"
+    state: directory
+
+- name: Create nginx virtual host
+  template:
+    src: vhost.conf.j2
+    dest: "/etc/nginx/sites-enabled/{{ server_name }}"
+  notify:
+    - Restart Nginx
