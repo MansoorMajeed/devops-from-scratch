@@ -1,2 +1,6 @@
 .vagrant/
+<<<<<<< HEAD
 node_modules/
+=======
+*.swp
+>>>>>>> ef22df20aa60b11435380dcbcc194c4e5de3824e

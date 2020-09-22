@@ -1,3 +1,7 @@
+[git_server]
+192.168.33.13
+
+
 [nodejsapp-frontend]
 192.168.33.10
 

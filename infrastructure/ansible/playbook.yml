@@ -1,4 +1,12 @@
 ---
+- hosts: git_server
+  remote_user: vagrant
+  become: yes
+
+  roles:
+    - git-server
+      
+
 - hosts: nodejsapp-frontend
   remote_user: vagrant
   become: yes
@@ -7,6 +15,7 @@
     - common
     - nginx-common
     - nginx-nodejsapp
+   
 
 - hosts: nodejsapp-backend
   remote_user: vagrant
