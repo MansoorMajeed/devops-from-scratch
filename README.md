@@ -23,3 +23,5 @@ You can open an issue if you have something to discuss
 [19. Managing VirtualMachines using Vagrant](episodes/19-vagrant-intro.md)
 
 [20. Introduction to Git](episodes/20-Introduction-to-git.md)
+
+[21. Setting up a git server using Ansible and Vagrant](episodes/21-setting-up-git-server-vagrant-ansible.md)
