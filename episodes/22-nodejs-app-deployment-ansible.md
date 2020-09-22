@@ -1,0 +1,114 @@
+# Deploying a simple NodeJS based app with Nginx Load balancer
+
+TODO:
+
+- [ ] Update vagrantfile location
+- [ ] Update Ansible files location
+- [ ] Update sample app location
+- [ ] Update deploy script location
+
+## Key points
+
+- Load balancing using **nginx**
+- Launching VMs using **vagrant**
+- Configuring the VMs using **ansible**
+- Use our **git server** to store the code
+- Simple shell script for manual deployment
+
+
+## This is what we are going to build
+
+```
+       +----------+
+       |  Nginx   |
+       |  proxy   |
+       +----+-----+
+            |
+            |    Load Balancing
+     +------+-------+
+     |              |
++----v----+    +----v----+
+| NodeJS  |    | NodeJS  |
+| VM 1    |    | VM 2    |
++---------+    +---------+
+```
+
+
+### Why Nginx?
+
+- Load balancer
+- Caching (Future)
+- SSL Termination (Future)
+- Advanced rules (Future)
+
+### Why two VMs
+
+That is only for the purpose of this demonstration. It does not make sense to
+have two VMs running just one process each. But I wanted to show the concept
+of loadbalancing
+
+## Steps
+
+### 1. Launch the VMs using Vagrant
+
+We have three VMs to launch, obiously we will use Vagrant for that.
+
+Vagrant files [HERE]()
+
+
+
+### 2. Write the Ansible manifests to configure the VMs
+
+We will have these roles
+
+- common : This contains common stuff for all the servers (git, vim etc)
+- nginx-common: Whatever that is common for all nginx servers (like, installing nginx itself)
+- nginx-nodejsapp: nginx stuff specific to our nodejsapp
+- nodejs-common: Common for all nodejs apps
+
+#### On the Nginx VM
+
+We need
+    - Nginx installed
+    - Nginx virtualhost configuration
+
+#### On the NodeJS VMs
+
+We need
+    - NodeJS installed
+
+
+
+
+### 3. Sample application
+
+Of course we need a demo app. This time, we will use an express based simple 
+hello world application. Why express? Because I want to introduce `npm install`
+as part of our deployment.
+
+The sample app is [HERE]()
+
+The `package.json` was created using the following. I am leaving it here
+for reference, you don't have to do this as the `package.json` is already
+present
+```
+# Just press Enter for all the prompts
+npm init
+```
+
+And then
+```
+npm install express --save
+```
+Which will save the dependency (express) into the `package.json`
+
+### 4. Deploying it
+
+We shall have a simple, dumb script that will do the deployment for us
+
+1. Clone the codebase
+2. Run `npm install`
+3. Copy the resulting everything into the nodejs machines
+4. Restart the node processes
+
+The dumb script is present [HERE]()
