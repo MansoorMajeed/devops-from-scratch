@@ -4,6 +4,7 @@
   become: yes
 
   roles:
+    - common
     - git-server
       
 
