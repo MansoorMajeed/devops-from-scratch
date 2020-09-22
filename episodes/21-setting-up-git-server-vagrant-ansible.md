@@ -5,12 +5,12 @@ Video Link [HERE]()
 We are going to setup a local Git server.
 The idea is similar even if you are using a cloud provider.
 
-**Vagrant** will be used to provision the VM. Vagrantfile is [HERE](infrastructure/vagrant/apps/git-server/Vagrantfile)
+**Vagrant** will be used to provision the VM. Vagrantfile is [HERE](../infrastructure/vagrant/apps/git-server/Vagrantfile)
 
 **Ansible** will be used to fully automate the management of the git server.
-Ansible files are [HERE](infrastructure/ansible)
+Ansible files are [HERE](../infrastructure/ansible)
 
-The git-server specific role which has all the stuff needed for the git server is [HERE](infrastructure/ansible/roles/git-server)
+The git-server specific role which has all the stuff needed for the git server is [HERE](../infrastructure/ansible/roles/git-server)
 
 ## Steps for manually doing it
 
