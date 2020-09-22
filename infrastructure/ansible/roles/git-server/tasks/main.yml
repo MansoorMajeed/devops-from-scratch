@@ -1,0 +1,19 @@
+---
+- name: Install git
+  apt:
+      name: git
+      state: present
+
+- name: Git user
+  user:
+      name: git
+      shell: /bin/bash
+
+
+- name: Keys allowed to use git
+  authorized_key:
+      user: git
+      state: present
+      key: '{{ item }}'
+  with_file:
+      - ssh_keys/mansoor
