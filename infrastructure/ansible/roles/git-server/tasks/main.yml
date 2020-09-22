@@ -1,8 +1,11 @@
 ---
-- name: Install git
+- name: Install Packages
   apt:
-      name: git
       state: present
+      name:
+        - git
+        - acl # Needed for Ansible to work well with unprivileged user
+
 
 - name: Git user
   user:
@@ -17,3 +20,12 @@
       key: '{{ item }}'
   with_file:
       - ssh_keys/mansoor
+
+- name: Create Repositories
+  command: "{{ 'git init --bare  /home/git/repos/' + item + '.git' }}"
+  become_user: git
+  args:
+    creates: "{{ '/home/git/repos/' + item + '.git/HEAD' }}"
+  loop:
+    - repo1
+    - repo2
