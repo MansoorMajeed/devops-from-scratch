@@ -2,10 +2,10 @@
 192.168.33.13
 
 
-[nodejsapp-frontend]
+[nodejsapp_frontend]
 192.168.33.10
 
 
-[nodejsapp-backend]
+[nodejsapp_backend]
 192.168.33.11
 192.168.33.12

@@ -11,7 +11,7 @@
 ################################
 
 ##### For the NodeJS App #######
-- hosts: nodejsapp-frontend
+- hosts: nodejsapp_frontend
   remote_user: vagrant
   become: yes
 
@@ -20,7 +20,7 @@
     - nginx-common
     - nginx-nodejsapp
 
-- hosts: nodejsapp-backend
+- hosts: nodejsapp_backend
   remote_user: vagrant
   become: yes
 
