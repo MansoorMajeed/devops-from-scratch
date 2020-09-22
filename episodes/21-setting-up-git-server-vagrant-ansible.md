@@ -1,5 +1,7 @@
 # Setting up a Git server (Using Vagrant and Ansible)
 
+Video Link [HERE]()
+
 We are going to setup a local Git server.
 The idea is similar even if you are using a cloud provider.
 
