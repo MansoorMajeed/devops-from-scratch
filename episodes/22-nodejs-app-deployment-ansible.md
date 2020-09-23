@@ -7,6 +7,9 @@ Video Link [HERE]()
 - Load balancing using **nginx**
 - Launching VMs using **vagrant**
 - Configuring the VMs using **ansible**
+  - Ansible Roles
+  - Templates
+  - Variables
 - Use our **git server** to store the code
 - Simple shell script for manual deployment
 
