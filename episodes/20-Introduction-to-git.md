@@ -1,6 +1,6 @@
 # Introduction to Git
 
-Video Link [HERE](#)
+Video Link [HERE](https://www.youtube.com/watch?v=uxE2Le64vHk&list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14&index=21)
 
 
 ## What is the Problem we are solving?

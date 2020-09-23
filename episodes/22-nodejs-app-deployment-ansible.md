@@ -1,6 +1,6 @@
 # Deploying a simple NodeJS based app with Nginx Load balancer
 
-Video Link [HERE]()
+Video Link [HERE](https://www.youtube.com/watch?v=HCbc-m2CVVw&list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14&index=22)
 
 ## Key points
 
@@ -51,20 +51,20 @@ of loadbalancing
 
 We have three VMs to launch, obiously we will use Vagrant for that.
 
-Vagrant files [HERE](infrastructure/vagrant/apps/nodejsapp)
+Vagrant files [HERE](../infrastructure/vagrant/apps/nodejsapp)
 
 
 
 ### 2. Write the Ansible manifests to configure the VMs
 
-Ansible files [HERE](infrastructure/ansible)
+Ansible files [HERE](../infrastructure/ansible)
 
 We will have these roles
 
-- [common](infrastructure/ansible/roles/common) : This contains common stuff for all the servers (git, vim etc)
-- [nginx-common](infrastructure/ansible/roles/nginx-common): Whatever that is common for all nginx servers (like, installing nginx itself)
-- [nginx-nodejsapp](infrastructure/ansible/roles/nginx-nodejsapp): nginx stuff specific to our nodejsapp
-- [nodejs-common](infrastructure/ansible/roles/nodejs-common): Common for all nodejs apps
+- [common](../infrastructure/ansible/roles/common) : This contains common stuff for all the servers (git, vim etc)
+- [nginx-common](../infrastructure/ansible/roles/nginx-common): Whatever that is common for all nginx servers (like, installing nginx itself)
+- [nginx-nodejsapp](../infrastructure/ansible/roles/nginx-nodejsapp): nginx stuff specific to our nodejsapp
+- [nodejs-common](../infrastructure/ansible/roles/nodejs-common): Common for all nodejs apps
 
 #### On the Nginx VM
 
@@ -86,7 +86,7 @@ Of course we need a demo app. This time, we will use an express based simple
 hello world application. Why express? Because I want to introduce `npm install`
 as part of our deployment.
 
-The sample app is [HERE](demo-apps/nodejsapp)
+The sample app is [HERE](../demo-apps/nodejsapp)
 
 The `package.json` was created using the following. I am leaving it here
 for reference, you don't have to do this as the `package.json` is already
@@ -111,5 +111,5 @@ We shall have a simple, dumb script that will do the deployment for us
 3. Copy the resulting everything into the nodejs machines
 4. Restart the node processes
 
-The dumb script is present [HERE](demo-apps/nodejsapp/deploy.sh)
+The dumb script is present [HERE](../demo-apps/nodejsapp/deploy.sh)
 Please don't use this deploy script for anything other than learning

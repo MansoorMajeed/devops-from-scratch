@@ -1,7 +1,7 @@
 # Managing VirtualMachines using Vagrant
 
 
-Video Link [HERE](https://youtu.be/Vfoj_nu8cmg)
+Video Link [HERE](https://www.youtube.com/watch?v=Vfoj_nu8cmg&list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14&index=20&t=156s)
 
 ## The Problem we are trying to solve
 

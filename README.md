@@ -25,3 +25,5 @@ You can open an issue if you have something to discuss
 [20. Introduction to Git](episodes/20-Introduction-to-git.md)
 
 [21. Setting up a git server using Ansible and Vagrant](episodes/21-setting-up-git-server-vagrant-ansible.md)
+
+[22. Deploying NodeJS app with Nginx Load balancer using Ansible](episodes/22-nodejs-app-deployment-ansible.md)

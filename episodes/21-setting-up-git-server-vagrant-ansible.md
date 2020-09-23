@@ -1,6 +1,6 @@
 # Setting up a Git server (Using Vagrant and Ansible)
 
-Video Link [HERE]()
+Video Link [HERE](https://www.youtube.com/watch?v=uxE2Le64vHk&list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14&index=21)
 
 We are going to setup a local Git server.
 The idea is similar even if you are using a cloud provider.
