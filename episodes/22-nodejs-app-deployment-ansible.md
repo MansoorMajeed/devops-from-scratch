@@ -10,7 +10,7 @@ Video Link [HERE](https://www.youtube.com/watch?v=HCbc-m2CVVw&list=PLxYCgfC5Wpns
   - Ansible Roles
   - Templates
   - Variables
-- Use our **git server** to store the code
+  - Handlers
 - Simple shell script for manual deployment
 
 
@@ -38,6 +38,11 @@ Video Link [HERE](https://www.youtube.com/watch?v=HCbc-m2CVVw&list=PLxYCgfC5Wpns
 - Caching (Future)
 - SSL Termination (Future)
 - Advanced rules (Future)
+
+#### Why Load balancer
+- Lets us run multiple instances of our app
+- Which gives redundancy and fault tolerance.
+- Let's us deploy without causing downtime (We can update the backends one at a time)
 
 ### Why two VMs
 
