@@ -1,6 +1,16 @@
 # Deploying a simple NodeJS based app with Nginx Load balancer
 
+
 Video Link [HERE](https://www.youtube.com/watch?v=HCbc-m2CVVw&list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14&index=22)
+
+#### Previous Videos Related to this one
+
+Vagrant Intro [HERE](https://www.youtube.com/watch?v=Vfoj_nu8cmg&list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14&index=20)
+
+Ansible Intro [HERE](https://www.youtube.com/watch?v=xT0K0k36pxU&list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14&index=19)
+
+Nodejs+Nginx Intro [HERE](https://www.youtube.com/watch?v=6NC5V9gYANs&list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14&index=16)
+
 
 ## Key points
 
