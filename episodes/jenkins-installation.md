@@ -121,9 +121,67 @@ Jenkins should load now, but on http only.
 
 ## Step 9 - Configuring SSL
 
-### Prerequisites
+There is a dedicated document for fetching and configuring SSL with Nginx with all the necessary
+documents. Go [HERE](setting-up-letsencrypt-ssl-with-nginx.md)
 
-- Make sure the domain is pointed to the server IP
-- The server is publicly accessible over port 80
+Come back here after that.
 
-https://www.digitalocean.com/community/tutorials/how-to-configure-jenkins-with-ssl-using-an-nginx-reverse-proxy-on-ubuntu-20-04
+Make sure you have the certificate and key in location
+```
+root@jenkins-server:~# ls -l /etc/letsencrypt/live/jenkins.devops.esc.sh/
+total 4
+lrwxrwxrwx 1 root root  45 Sep 27 07:52 cert.pem -> ../../archive/jenkins.devops.esc.sh/cert1.pem
+lrwxrwxrwx 1 root root  46 Sep 27 07:52 chain.pem -> ../../archive/jenkins.devops.esc.sh/chain1.pem
+lrwxrwxrwx 1 root root  50 Sep 27 07:52 fullchain.pem -> ../../archive/jenkins.devops.esc.sh/fullchain1.pem
+lrwxrwxrwx 1 root root  48 Sep 27 07:52 privkey.pem -> ../../archive/jenkins.devops.esc.sh/privkey1.pem
+-rw-r--r-- 1 root root 692 Sep 27 07:52 README
+root@jenkins-server:~#
+```
+
+
+Update the nginx config to look like this
+```
+
+server {
+    listen 80;
+    server_name jenkins.devops.esc.sh;
+
+	location / {
+        return 301 https://$host$request_uri;
+	}
+}
+
+server {
+    listen 443 ssl;
+
+    server_name jenkins.devops.esc.sh;
+
+    ssl_certificate /etc/letsencrypt/live/jenkins.devops.esc.sh/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/jenkins.devops.esc.sh/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+
+    
+	location / {
+		include /etc/nginx/proxy_params;
+		proxy_pass          http://localhost:8080;
+		proxy_read_timeout  60s;
+        # Fix the "It appears that your reverse proxy set up is broken" error.
+        # Make sure the domain name is correct
+		proxy_redirect      http://localhost:8080 https://jenkins.devops.esc.sh;
+	}
+}
+
+```
+
+Make sure nginx is alright `nginx -t`
+
+Reload Nginx
+
+```
+sudo systemctl reload nginx
+```
+
+And that is pretty much it, Jenkins is up and ready with a freshly configured sweet
+sweet green padlocked SSL certificate
