@@ -1,4 +1,4 @@
-# How to configure SSL with Let's Encrypt and Nginx
+# How to configure SSL with Let's Encrypt and Nginx (Production Ready)
 
 This document explains how to setup and configure SSL for a domain name
 with Let'sEncrypt and Nginx
