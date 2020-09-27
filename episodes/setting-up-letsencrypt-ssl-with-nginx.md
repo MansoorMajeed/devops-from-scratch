@@ -6,6 +6,19 @@ with Let'sEncrypt and Nginx
 For this tutorial, I will be using a Debian 10 server. This should work for any debian
 based distro
 
+## Goals
+
+1. Fetch SSL certificates for a domain
+2. Configure Nginx to use SSL
+3. HTTP to HTTPS redirection : [HERE](#step-6-optional---redirect-http-to-https)
+4. Auto renew certificates :    [HERE](#step-7---enable-auto-renew)
+5. Redirect www to non-www or viceversa : [HERE](#step-8-optional---redirect-www-to-non-www-or-vice-versa)
+    - Redirect www to non-www without http to https redirection : [HERE](#without-http---https-redirection)
+    - Redirect www to non-www with http to https redirection : [HERE](#with-http---https-redirection)
+    - Redirect non-www to www without http to https redirection : [HERE](#without-http---https-redirection-1)
+    - Redirect non-www to www with http to https redirection : [HERE](#with-http---https-redirection-1)
+
+
 ## Prerequisites
 
 - A publicly accessible server (if you plan to use HTTP challenge to fetch the certificate)
