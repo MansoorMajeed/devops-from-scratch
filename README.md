@@ -8,7 +8,12 @@ Playlist is [HERE](https://www.youtube.com/playlist?list=PLxYCgfC5WpnsAg5Lddfjli
 
 You can open an issue if you have something to discuss
 
-## DevOps From Scratch Episode specific Notes
+## General 'how to' tutorials
+
+Nothing here (yet)
+
+
+## DevOps From Scratch Episode Specific Notes and Tutorials
 
 [0. The Roadmap](episodes/0-roadmap.md)
 
