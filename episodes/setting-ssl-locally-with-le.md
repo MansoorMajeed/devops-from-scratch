@@ -37,7 +37,7 @@ certbot -d your-domain.com --manual --preferred-challenges dns-01 certonly
 this will put you in a prompt like below
 Press Y for the question of logging the IP address.
 
-```
+```bash
 root@jenkins-server:~# certbot -d jenkins.devops.esc.sh --manual --preferred-challenges dns-01 certonly
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 Plugins selected: Authenticator manual, Installer None
@@ -71,7 +71,7 @@ so I have added it like this
 
 And in `dig` it should show up like this
 
-```
+```bash
 ➜  ~ dig _acme-challenge.jenkins.devops.esc.sh TXT +short
 "2xdgemNwApJ6OGVkFlAJFk0PB2h45m_J9C_I55IywLA"
 ➜  ~
@@ -83,7 +83,7 @@ You can use it anywhere
 
 For example, you can configure Nginx to use it like this
 
-```
+```nginx
 server {
     listen 80;
 
