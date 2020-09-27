@@ -52,7 +52,7 @@ redirected, causing the renewal to fail
 
 Create `/etc/nginx/snippets/letsencrypt.conf` with the following content
 
-```
+```nginx
 location ^~ /.well-known/acme-challenge/ {
     default_type "text/plain";
     root /var/www/letsencrypt;
@@ -72,7 +72,7 @@ If you already have an HTTP configuration, all you have to do is, the `include` 
 
 Create `/etc/nginx/sites-enabled/ssl.demo.esc.sh` (Change the domain name obviously)
 
-```
+```nginx
 server {
     listen 80;
 
