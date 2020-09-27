@@ -145,7 +145,7 @@ https://www.ssllabs.com/ssltest/analyze.html?d=www.ssl.demo.esc.sh
 At this point, you should have the certificates in place. Your nginx conf will look
 similar to this
 
-```
+```nginx
 server {
     listen 80;
 
@@ -171,7 +171,7 @@ server {
 It is recommended that you enable HTTP to HTTPS redirection
 Edit the nginx conf and make it look like this
 
-```
+```nginx
 server {
     listen 80;
 
@@ -258,7 +258,7 @@ Now we want `www.ssl.demo.esc.sh` redirected to `ssl.demo.esc.sh`
 
 Edit the redirection part in the port 80 block to make it look like this:
 
-```
+```nginx
 # For redirecting www -> non-www and http -> https (HTTP request)
 server {
     listen 80;
@@ -317,7 +317,7 @@ server {
 Remember, this is a single nginx config. We need all these blocks to deal with
 the all combination scenarios
 
-```
+```nginx
 # For redirecting www -> non www (HTTP request)
 server {
     listen 80;
@@ -390,7 +390,7 @@ all request to `ssl.demo.esc.sh` -> `www.ssl.demo.esc.sh`
 #### With http -> https redirection
 
 
-```
+```nginx
 # For redirecting non-www -> www and http -> https (HTTP request)
 server {
     listen 80;
@@ -450,7 +450,7 @@ server {
 Remember, this is a single nginx config. We need all these blocks to deal with
 the all combination scenarios
 
-```
+```nginx
 # For redirecting non www -> www (HTTP request)
 server {
     listen 80;
