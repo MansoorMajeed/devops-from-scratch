@@ -82,6 +82,7 @@ fetch a fresh certificate and place it under `/etc/letsencrypt/live/<your domain
 You can use it anywhere
 
 For example, you can configure Nginx to use it like this
+To create letsencrypt.conf, refer [THIS](setting-up-letsencrypt-ssl-with-nginx.md#step-3---create-letsencryptconf)
 
 ```nginx
 server {
