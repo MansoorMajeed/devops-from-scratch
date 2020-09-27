@@ -240,6 +240,13 @@ There are 4 possible combinations of requests
 
 So, we need to have rules to handle all of them.
 
+Pay attention to the `server_name` part and the `return 301`. The idea is, we
+will create a dedicated server block for what we need redirected and then change
+the target using the return
+
+So, www -> non-www servr block means `server_name` will be `www` and `return` will
+be to `non-www`
+
 ### Option 1 : www -> non wwww (That is, non www preferred)
 
 So, we choose `ssl.demo.esc.sh` (without www) as our preferred name.
@@ -435,7 +442,6 @@ server {
 }
 ```
 
-#### Without http -> https redirect
 
 #### Without http -> https redirection
 
@@ -445,33 +451,52 @@ Remember, this is a single nginx config. We need all these blocks to deal with
 the all combination scenarios
 
 ```
-# For redirecting www -> non www (HTTP request)
+# For redirecting non www -> www (HTTP request)
 server {
     listen 80;
 
     include /etc/nginx/snippets/letsencrypt.conf;
 
-    server_name  www.ssl.demo.esc.sh;
+    server_name  ssl.demo.esc.sh;
 
-    # Redirect www -> non www
+    # Redirect non www -> www
     location / {
-       return 301 http://ssl.demo.esc.sh$request_uri;
+       return 301 http://www.ssl.demo.esc.sh$request_uri;
     }
 }
 
-# For serving the non www site (HTTP)
+# For serving the www site (HTTP)
 server {
     listen 80;
 
     include /etc/nginx/snippets/letsencrypt.conf;
 
-    server_name ssl.demo.esc.sh;
+    server_name www.ssl.demo.esc.sh;
 
     root /var/www/ssl.demo.esc.sh;
     index index.html;
 }
 
-# For redirecting www -> non www (https)
+# For redirecting non www -> www (https)
+server {
+
+    listen 443 ssl; # managed by Certbot
+
+    ssl_certificate /etc/letsencrypt/live/ssl.demo.esc.sh/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/ssl.demo.esc.sh/privkey.pem; # managed by Certbot
+
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+    server_name ssl.demo.esc.sh;
+
+    # Redirect non www -> www
+    location / {
+       return 301 https://www.ssl.demo.esc.sh$request_uri;
+    }
+}
+
+# For serving the www site (HTTPS)
 server {
 
     listen 443 ssl; # managed by Certbot
@@ -483,25 +508,6 @@ server {
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
     server_name www.ssl.demo.esc.sh;
-
-    # Redirect www -> non www
-    location / {
-       return 301 https://ssl.demo.esc.sh$request_uri;
-    }
-}
-
-# For serving the non www site (HTTPS)
-server {
-
-    listen 443 ssl; # managed by Certbot
-
-    ssl_certificate /etc/letsencrypt/live/ssl.demo.esc.sh/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/ssl.demo.esc.sh/privkey.pem; # managed by Certbot
-
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
-    server_name ssl.demo.esc.sh;
 
     root /var/www/ssl.demo.esc.sh;
     index index.html;
