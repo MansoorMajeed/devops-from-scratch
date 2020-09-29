@@ -83,3 +83,171 @@ This is all they can see.
 ```
 
 I know which version I prefer for the shady hacker to see 
+
+## What does TLS do for us
+
+1. Makes sure that the data we are sending/receiving is only seen by us and the server - Encryption
+2. Ensures that the server we are talking to is the right one - Authentication
+3. Makes sure that no one tampers with the data. That is, if you sent "Hello" to your friend in Facebook
+messenger, they should receive exactly the same. No one should be able to tamper with it over the network - Integrity
+
+## TLS Terminology
+
+Before we talk about how TLS works, it is important to take a look at the terms we use when we talk about TLS
+
+
+### Encryption
+
+You know this one. This is the process of converting a human readable plain text into a non human-readable format.
+Just like the above example
+
+Encryption makes sure that, only us and the server can read the data, no one else on the network can.
+
+### Types of Encryption
+
+There are mainly two types of Encryption
+
+#### Symmetric Encryption
+
+In this, both parties uses the same key to encrypt and decrypt the data. Example: AES
+
+But the problem is that, both parties need to know the shared key to be able to encrypt or
+decrypt. So, this is a challenge when dealing with communications across a network.
+
+#### Asymmetric Encryption (Public key encryption)
+
+There is a key pair. They are called public and private key. For example, using `ssh-keygen` we have generated SSH
+key pair. They are always related to each other.
+
+If you encrypt something with one key, you can decrypt it only using the other key.
+
+So, if I encrypt something using the public key, only the private key associated with it can decrypt it.
+
+### Ciphers
+
+Algorithms used to encrypt/decrypt data
+
+### TLS Certificate
+
+A text file with a bunch of information like the owner of a domain, expiry of the certificate, who approved this certificate
+the public key etc. This is sent by the server to the client.
+
+This is how it looks like being used in a webserver configuration
+```
+ssl_certificate /etc/letsencrypt/live/ssl.demo.esc.sh/fullchain.pem;
+```
+
+The certificate itself looks like this
+
+```
+head /etc/letsencrypt/live/ssl.demo.esc.sh/fullchain.pem                                                                                                                                                                    root@hydrogen
+-----BEGIN CERTIFICATE-----
+MIIFazCCBFOgAwIBAgISBKNEQbcYxhnjsYe613NE1rsvMA0GCSqGSIb3DQEBCwUA
+MEoxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MSMwIQYDVQQD
+ExpMZXQncyBFbmNyeXB0IEF1dGhvcml0eSBYMzAeFw0yMDA5MjcwNTI0MDVaFw0y
+MDEyMjYwNTI0MDVaMBoxGDAWBgNVBAMTD3NzbC5kZW1vLmVzYy5zaDCCASIwDQYJ
+KoZIhvcNAQEBBQADggEPADCCAQoCggEBALvT6DX2U9C8i0iVmDGEicq2H4Gk56Ee
+ROPbOWuz+7kSxHXAOHFGffrKpsKvPfpx+pq8V56PwZQZz/mbEEFjd2lRDrIZi0nR
+SLoYL3pQVptkyfCGQAzAfBvZQqonZ0AgPcJZ4CjIQCn9w/S4SOuKzSOlhyX+2Jzo
+G3BIA8Jtvfs4UkL17Z+nT8SbUeDmykbNp1CvlqS9EVYaoMUevt9frV5oV0MzsNSA
+8/4ZO9nzoztptpgf1H2NH30ZTBMoZAdVbDKAh4Un+Urwlc9XZagv9HaCw5tpyEpa
+```
+
+You can fetch a domain's certificate using the command
+
+```
+openssl s_client -showcerts -connect ssl.demo.esc.sh:443 -servername ssl.demo.esc.sh </dev/null 2>/dev/null
+```
+
+You can also get the certificate information by looking at your browser.
+Click on the padlock -> Certificate. It looks like this
+
+![SSL Cert info](img/ssl-info.png)
+
+> TLS Certificates are public, not secret (unlike the private key)
+
+### Who issues these certificates - Certificate Authority (CA)
+
+To be able to have the browser trust a website's TLS certificate, this needs to be issued by
+one of the Certificate Authorities
+
+So if you own a domain, say `esc.sh` and you want to make your website secure using TLS, you can
+approach a certificate authority and ask for a certificate. They will ask you to prove that you own
+the domain. Once you have proved it, they will give you the certificate (Hugely oversimplified)
+
+In the old days you had to pay for these certificates, but now you can get one for free from
+Let's Encrypt.
+
+#### What is special about CAs
+
+The certificate authorities are trusted by all the browsers. So, if the browser sees that the
+server it is connecting to have a certificate that is issued by a known CA in its list, then it will trust
+it (provided the expiry is with in the tiomeframe and other information are correct)
+
+### Private key
+
+The other half of the public key encryption. It can decrypt whatever is encrypted using the public key.
+Also, it can encrypt stuff that can be decrypted using the public key
+
+
+It looks like this in Nginx configuration
+```
+ssl_certificate_key /etc/letsencrypt/live/ssl.demo.esc.sh/privkey.pem;
+```
+
+And the file itself looks like this
+> Do not post your private key anywhere. I edited it out and replaced it with the
+> certificate itself ;) So, good luck with trying to guess the private key ;)
+
+```
+head /etc/letsencrypt/live/ssl.demo.esc.sh/privkey.pem
+-----BEGIN PRIVATE KEY-----
+MIIFazCCBFOgAwIBAgISBKNEQbcYxhnjsYe613NE1rsvMA0GCSqGSIb3DQEBCwUA
+MEoxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MSMwIQYDVQQD
+ExpMZXQncyBFbmNyeXB0IEF1dGhvcml0eSBYMzAeFw0yMDA5MjcwNTI0MDVaFw0y
+MDEyMjYwNTI0MDVaMBoxGDAWBgNVBAMTD3NzbC5kZW1vLmVzYy5zaDCCASIwDQYJ
+KoZIhvcNAQEBBQADggEPADCCAQoCggEBALvT6DX2U9C8i0iVmDGEicq2H4Gk56Ee
+ROPbOWuz+7kSxHXAOHFGffrKpsKvPfpx+pq8V56PwZQZz/mbEEFjd2lRDrIZi0nR
+SLoYL3pQVptkyfCGQAzAfBvZQqonZ0AgPcJZ4CjIQCn9w/S4SOuKzSOlhyX+2Jzo
+G3BIA8Jtvfs4UkL17Z+nT8SbUeDmykbNp1CvlqS9EVYaoMUevt9frV5oV0MzsNSA
+8/4ZO9nzoztptpgf1H2NH30ZTBMoZAdVbDKAh4Un+Urwlc9XZagv9HaCw5tpyEpa
+```
+### Can I make my own ceritificates?
+
+Yes, they are called self signed certificates. Since they are not trusted by a CA, your browser won't
+trust that certificate. But you can add your own CA and trust it in your browser. This way, all certificates
+issued by your own CA will work on your browsers (Remember, this means it will only work on browsers where
+you have installed your own CA certificates)
+
+## How does TLS encryption works - TLS Handshakes
+
+The process that encrypts the communication between a client and a server is called **TLS (SSL) Handshake**
+
+When a user visits a website with TLS enabled, this is what happens
+
+1. **Client Hello** (Plain) : The handshake is initiated by the client. This hello message includes:
+    - Tthe versions of TLS/SSL the client supports
+    - The cipher suite it supports
+    - "client random" - a random string
+2. **Server Hello** (Plain) : The server replies with the following
+    - Chosen cipher suite
+    - Server's TLS certificate
+    - "server random" - another random string
+3. **Authentication** (Plain) : The client
+    - Looks at the certificate the server sent, looks at the CA, expiry etc
+    - If it matches the domain name, not expired, trusted CA then it validates the authenticity of the website
+    - Remember that the client also got the public key of the server from the certificate
+4. **Premaster secret** (Key is encrypted with public key): The client
+    - Generates another random string
+    - Encrypts it using the server's public key (Now, only the server can decrypt it)
+    - Sends it to the server
+5. **Premaster secret decrypted** : The server uses its private key to decrypt the premaster secret
+6. **Session keys created**: Both the client and the server generates the session key using
+    - Client random + Server random + premaster secret = Session key
+    - Both the server and the client will have the same key (symmetric)
+7. **Client Ready** (Symmetric encrypted) : Client sends ready message which is encrypted using the session key
+8. **Server ready** (Symmetric encrypted) : Server sends ready message which is encrypted using the same session key
+9. **Encrypted channel created** : Going from here, until a new session is created, everything is encrypted. This includes your
+credit card details, usernames, passwords, the URL etc
+
+
