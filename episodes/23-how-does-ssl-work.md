@@ -1,5 +1,7 @@
 # How does SSL (TLS) work
 
+Video Link [HERE](https://youtu.be/pc5Xf9uuvwE)
+
 ## What is SSL/TLS
 
 - `SSL` stands for Secure Sockets Layer. 
