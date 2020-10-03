@@ -32,3 +32,5 @@ Nothing here (yet)
 [21. Setting up a git server using Ansible and Vagrant](episodes/21-setting-up-git-server-vagrant-ansible.md)
 
 [22. Deploying NodeJS app with Nginx Load balancer using Ansible](episodes/22-nodejs-app-deployment-ansible.md)
+
+[23. How does TLS/SSL work](episodes/23-how-does-ssl-work.md)
