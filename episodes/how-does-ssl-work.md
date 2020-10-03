@@ -23,7 +23,7 @@ is the secure version of the HTTP protocol, which is used to transfer data betwe
 For example, when you open a website like google.com, your browser and google.com's servers use
 `http` and the server sends the webpage to your browser.
 
-HTTPS = HTTPS + SSL
+HTTPS = HTTP + SSL
 
 ### TLS vs SSL
 
@@ -251,3 +251,4 @@ When a user visits a website with TLS enabled, this is what happens
 credit card details, usernames, passwords, the URL etc
 
 
+![How SSL Works](img/how-ssl-works.png)
