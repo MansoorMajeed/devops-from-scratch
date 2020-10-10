@@ -1,7 +1,14 @@
 # How to configure SSL with Let's Encrypt and Nginx (Production Ready)
 
+
+
 This document explains how to setup and configure SSL for a domain name
 with Let'sEncrypt and Nginx
+
+## Video Link
+[![Watch the video](img/24.png)](https://youtu.be/NRJIhc3aQn0)
+
+
 
 For this tutorial, I will be using a Debian 10 server. This should work for any debian
 based distro
