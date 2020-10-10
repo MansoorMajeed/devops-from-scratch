@@ -34,3 +34,5 @@ Nothing here (yet)
 [22. Deploying NodeJS app with Nginx Load balancer using Ansible](episodes/22-nodejs-app-deployment-ansible.md)
 
 [23. How does TLS/SSL work](episodes/23-how-does-ssl-work.md)
+
+[24. Securing an Nginx website with free let's encrypt SSL](episodes/24-securing-nginx-free-ssl-letsencrypt.md)
