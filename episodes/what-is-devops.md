@@ -48,7 +48,7 @@ They manage the servers where the `Boom Server` app is running.
 
 ### Waterfall model - The old days
 
-![Waterfall Model](waterfall-model.png)
+![Waterfall Model](img/waterfall-model.png)
 
 - There are different phases in this model, each dependent on the output of the previous
 - Once you are past a phase, you cannot go back, like a **waterfall**
