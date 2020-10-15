@@ -6,43 +6,19 @@ and efficiency at which software is released.
 Before we even begin to talk about DevOps, we need to know what was there before DevOps.
 What are the problems with the methods of the past
 
-
-## Let's talk with a real example.
-
-Let's say our company has a software as a service. Our software is something similar to Zoom, the video conferencing app.
-Let's call it "Boom"
-
-Boom has two components.
-
-1. The server side service (Let's call it `Boom Server`)
-2. The client application (like the zoom app on our laptop, let's call it `Boom Client`)
-
-
-And there is only one team to manage the code for both
-
-For the `Boom Server`, there is a Development environment (the Dev's laptop) and a production
-environment. Same for the `Boom Client`
-
-## The People involved
-
 ### Developers
 
 They write code. These includes, but not limited to:
-- Bug fixes (Ex: Boom crashes sometimes in certain operating systems)
-- New features (Ex: We are adding a feature to help with noice cancellation during meetings)
-- Security updates (Ex: There is a vulnerability that lets attackers compromise a computer running Boom)
-
-
-Let's say there are only two environments. 
-
+- Bug fixes 
+- New features 
+- Security updates 
 
 ### Operations Team
 
-They manage the servers where the `Boom Server` app is running.
-- They make sure that the Boom servers are up and running
+They manage the servers where the app is running.
+- They make sure that the servers are up and running
 - They patch the server, update the OS, manage firewall etc
-- They release new code given by the developers into the `Boom Server`
-- They also make the latest `Boom Client` available to download
+- They release new code given by the developers into the servers
 
 ## Some potentially boring history
 
@@ -57,16 +33,9 @@ They manage the servers where the `Boom Server` app is running.
 - A good analogy is constructing a house. You cannot change the design once you're half way with building the roof, right?
 
 
-Let's talk about our `Boom Video Calling App`, if we were do develop it following the waterfall
-model, we would have to precisely know all the requirements before hand, make all the decisions,
-write all the documentation even before the coding starts.
-And, once the coding is started, there is no going back and changing the design.
-
-
 #### The problems with waterfall model
 
 Absolutely not flexible
-
 
 ### The other models following waterfall
 
@@ -106,9 +75,9 @@ To keep things simple and in context, let's just take two scenarios. `Pre-DevOps
 > Don't quote me on it, I am just trying to explain what "DevOps" is fixing
 
 
-> For now, let's only talk about the `Boom Server App`. Imagine that there is a 
-> `git` repository with the code and the `master` branch is the mainline
-> And the developers work on their own branches when making a change
+> Imagine that there is a `git` repository with the code and the `master` 
+> branch is the mainline And the developers work on their own branches 
+> when making a change
 
 ### Pre-DevOps 
 
