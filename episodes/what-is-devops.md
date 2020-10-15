@@ -106,6 +106,7 @@ to make sure that the changes do not break things
 2. The developer's environment is different from the production, which causes:
 
 ![Works on my machine](img/works-on-my-machine.jpg)
+
 3. Lots of errors make their way into production
 4. The deployments are error prone
 5. Everything is error prone because humans are unreliable
