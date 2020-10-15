@@ -1,9 +1,11 @@
 # What is DevOps
 
 DevOps is a methodology in software development and release that aims to increase the speed
-and efficiency at which software is released.
+and efficiency at which software is released. This is achieved by making sure that the
+developers and the operations team work together, automate away whatever possible and through
+shared responsibilities.
 
-Before we even begin to talk about DevOps, we need to know what was there before DevOps.
+Before we even begin to talk more about DevOps, we need to know what was there before DevOps.
 What are the problems with the methods of the past
 
 ### Developers
@@ -147,3 +149,35 @@ at any time
 ## Continuous Deployment
 
 We actually go ahead and deploy it as soon as the software is built by the tool
+
+
+## So, with DevOps
+
+
+### Version control
+
+- Everything should be in `git`
+
+### Automation
+
+- Automated code testing (Selenium, Jenkins)
+- Automated integration (Jenkins)
+- Automated deployments (Jenkins
+- Automate launching of infrastructure (Terraform)
+- Automate the servers themselves (Ansible, Puppet, Chef)
+- Whatever is possible to automate, should be automated (ideally)
+
+### Make changes in smaller increments
+
+- All new changes are made in small increments that are tested and integrated before continuing
+
+### Dev environmet similar to production environment
+
+No more `works on my machine` excuse
+
+### Measure performance of the applications
+
+- Metrics like response time helps us in knowing if a change made our app slower and we can look
+into it to fix it (Prometheus, Grafana)
+- Monitor logs (ELK)
+- Thirdparty application performance monitoring tools (NewRelic, Datadog)
