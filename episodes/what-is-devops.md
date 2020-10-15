@@ -132,6 +132,49 @@ developer `D1` started working on a feature if done fully adds 10,000 new lines 
 Meanwhile, developer `D2` is working on another bug fix that changed a lot of lines.
 Towards the integration of both of these to the master, it is going to be such a pain in the neck
 to make sure that the changes do not break things
-2. The developer's environment is different from the production
+2. The developer's environment is different from the production, which causes:
 
 ![Works on my machine](img/works-on-my-machine.jpg)
+3. Lots of errors make their way into production
+4. The deployments are error prone
+5. Everything is error prone because humans are unreliable
+
+
+### With DevOps
+
+Now, I am gonna talk about an ideal DevOps scenario. One can dream, right?
+
+1. Developer writes code and ther are tests written for all the major functionalities.
+Ideally, ther are tests for all the functionalities
+2. Developer makes **smaller, incremental changes** and pushes to their branch
+3. A "tool" runs some automated tests to make sure that the developer did not break anything
+4. If the "tool" says all good, the code is merged to master.
+5. This means, multiple changes are merged to the master regularly (Continuous Integration)
+6. The "tool" builds the software and is ready to deploy any time (Continuous Delivery)
+7. In some cases, the "tool" does not wait for any particular time, instead it deploys to production regularly (Continuous Deployment) 
+8. While in production, the servers can scale themselves based on the traffic pattern, which means less headache for the "Ops"
+
+#### What did we gain from this?
+
+1. Considerably easier integration (due to frequent integrations)
+2. We catch much more bugs before they get to production (due to automated tests)
+3. If something breaks, it is easy to identify and fix because the amount of change is smaller
+4. No more "deploy day headaches" for the ops team.
+5. New features gets released to the customers much faster and the team can get feedback on the
+changes and fix/update as needed with minimal delay
+
+## Continuous Integration
+
+- Developers merge their changes back to master as soon as possible. This often means several
+"merge to master" per day.
+- Makes use of automated tests. That is, the change is merged to the main branch only if all
+the tests succeed
+
+## Continuous Delivery
+
+It means, we build our software as soon as it is merged and we are ready to deliver the software
+at any time
+
+## Continuous Deployment
+
+We actually go ahead and deploy it as soon as the software is built by the tool
