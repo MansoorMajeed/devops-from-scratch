@@ -1,4 +1,4 @@
-# What is DevOps
+# DevOps and Continuous Integration/Deployment/Delivery
 
 DevOps is a methodology in software development and release that aims to increase the speed
 and efficiency at which software is released. This is achieved by making sure that the
