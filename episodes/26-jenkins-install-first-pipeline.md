@@ -185,3 +185,33 @@ sudo systemctl reload nginx
 
 And that is pretty much it, Jenkins is up and ready with a freshly configured sweet
 sweet green padlocked SSL certificate
+
+
+## A Simple multi stage pipeline
+
+You can create a pipeline by New Item -> Pipeline. And then in the pipeline definition
+
+
+```
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+                echo 'building the software'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'testing the software'
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'deploying the software'
+            }
+        }
+    }
+}
+```
