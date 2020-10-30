@@ -36,3 +36,7 @@ Nothing here (yet)
 [23. How does TLS/SSL work](episodes/23-how-does-ssl-work.md)
 
 [24. Securing an Nginx website with free let's encrypt SSL](episodes/24-securing-nginx-free-ssl-letsencrypt.md)
+
+[25. DevOps and Continuous Integration/Deployment/Delivery](episodes/25-devops-ci-cd.md)
+
+[26. Installing and setting up Jenkins - Simple Pipeline Intro](episodes/26-jenkins-install-first-pipeline.md)
