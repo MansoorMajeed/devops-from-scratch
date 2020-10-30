@@ -7,8 +7,18 @@ var hostname = os.hostname();
 
 var pid = process.pid;
 
+const appVersion = "1.0";
+
 app.get('/', (req, res) => {
-  res.send('<h1>Hello from process: ' + pid + ', Running on: ' + hostname + '</h1>')
+
+  var msg = `<h1>Hello World!</h1>
+   <h2>
+    Process ID: ${pid} <br> 
+    Running on: ${hostname} <br>
+    App Version: ${appVersion}
+   </h2>`
+
+  res.send(msg)
 })
 
 app.listen(port, () => {
