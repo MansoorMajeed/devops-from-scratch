@@ -21,8 +21,92 @@ With this video, we will be creating a full pipeline that will:
 - The code runs in two VMs as we did in the past. They have Nodejs installed and configured
 - Jenkins runs in another VM
 
+Before we automate our deploys, first let's make sure that it works fine doing manually
 
-## Steps
+### 1. Review Current setup
+
+I have kept the demo app here too in this same repo : [../demo-apps/nodejsapp](../demo-apps/nodejsapp)
+
+This is our original deploy script
+
+```bash
+#!/bin/bash
+
+
+npm install
+
+# For the love of all that is good, don't use this in production
+# This is only for a demonstration of how things work behind the scene
+
+ssh vagrant@192.168.33.11 'sudo mkdir -p /app; sudo chown -R vagrant. /app'
+rsync -avz ./ vagrant@192.168.33.11:/app/
+ssh vagrant@192.168.33.11 "sudo pkill node; cd /app; node index.js > output.log 2>&1 &"
+
+
+ssh vagrant@192.168.33.12 'sudo mkdir -p /app; sudo chown -R vagrant. /app'
+rsync -avz ./ vagrant@192.168.33.12:/app/
+ssh vagrant@192.168.33.12 "sudo pkill node; cd /app; node index.js > output.log 2>&1 &"
+```
+
+### 2. Make the deploy process better
+
+Here, we were using very basic and stupid way to manage our node processes. We need to change that.
+Instead of killing and starting the node process manually, we can ask systemd to do that for us.
+Then we can start/stop/restart our process using `systemctl restart ourappname`
+
+So, let's create systemd service file on both the NodeJS Vms
+
+Create `/lib/systemd/system/nodeapp.service`
+
+```
+[Unit]
+Description=DevOps From Scratch Demo NodeJS App
+Documentation=https://esc.sh
+After=network.target
+
+[Service]
+Type=simple
+User=vagrant
+WorkingDirectory=/app
+ExecStart=/usr/bin/node /app/index.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+And once that is done, let's make these changes into effect
+
+```
+systemctl daemon-reload
+```
+
+Now the deploy script becomes
+
+```bash
+#!/bin/bash
+
+
+npm install
+
+# For the love of all that is good, don't use this in production
+# This is only for a demonstration of how things work behind the scene
+
+ssh vagrant@192.168.33.11 'sudo mkdir -p /app; sudo chown -R vagrant. /app'
+rsync -avz ./ vagrant@192.168.33.11:/app/
+ssh vagrant@192.168.33.11 "sudo systemctl restart nodeapp"
+
+
+ssh vagrant@192.168.33.12 'sudo mkdir -p /app; sudo chown -R vagrant. /app'
+rsync -avz ./ vagrant@192.168.33.12:/app/
+ssh vagrant@192.168.33.12 "sudo systemctl restart nodeapp"
+```
+
+Much better
+
+
+## Make our app get automatically deployed on any change
+
 
 ### 1. Create ssh key for our Jenkins server
 
@@ -74,10 +158,54 @@ sudo bash nodesource_setup.sh
 sudo apt-get install -y nodejs gcc g++ make
 ```
 
-### 3. Create the Jenkinsfile
+### 3. Create the Jenkinsfile in the app repository
 
+```
+pipeline {
+    agent any
+
+      stages {
+          stage('build') {
+              steps {
+                  echo 'building the software'
+                  sh 'npm install'
+              }
+          }
+          stage('test') {
+              steps {
+                  echo 'testing the software'
+                  sh 'npm test'
+              }
+          }
+
+          stage('deploy') {
+              steps {
+                withCredentials([sshUserPrivateKey(credentialsId: "jenkins-ssh", keyFileVariable: 'sshkey')]){
+                  echo 'deploying the software'
+                  sh '''#!/bin/bash
+                  echo "Creating .ssh"
+                  mkdir -p /var/lib/jenkins/.ssh
+                  ssh-keyscan 192.168.33.11 >> /var/lib/jenkins/.ssh/known_hosts
+                  ssh-keyscan 192.168.33.12 >> /var/lib/jenkins/.ssh/known_hosts
+
+                  rsync -avz --exclude  '.git' --delete -e "ssh -i $sshkey" ./ vagrant@192.168.33.11:/app/
+                  rsync -avz --exclude  '.git' --delete -e "ssh -i $sshkey" ./ vagrant@192.168.33.12:/app/
+
+                  ssh -i $sshkey vagrant@192.168.33.11 "sudo systemctl restart nodeapp"
+                  ssh -i $sshkey vagrant@192.168.33.12 "sudo systemctl restart nodeapp"
+
+                  '''
+              }
+          }
+      }
+    }
+}
+
+```
 
 ### 4. Give Jenkins ssh access to the NodeJS VMs
+
+Because we will be using SSH to do the deploys, the Jenkins VM should be able to access the NodeJS VMs
 
 ### 5. Create the Pipeline off of the Jenkinsfile
 
