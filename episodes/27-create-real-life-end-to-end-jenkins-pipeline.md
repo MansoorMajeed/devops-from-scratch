@@ -38,7 +38,7 @@ ssh-keygen -t rsa -b 4096 -C "jenkins@local" -f ./jenkins_id_rsa
 
 This will create the keypair in the same directory
 ```
-ls -l jenkins_id_rsa*                                                                                                                                                               ✔  5s  09:44:25 AM
+ls -l jenkins_id_rsa*
 -rw------- 1 mansoor 3381 Oct 24 09:44 jenkins_id_rsa
 -rw-r--r-- 1 mansoor  739 Oct 24 09:44 jenkins_id_rsa.pub
 ```
@@ -55,5 +55,29 @@ Also, we need to make sure that `git` is installed on the Jenkins server
 sudo apt install git
 ```
 
+> Note: new repositories in Github now uses "main" instead of "master", but for now let's stick to "master"
 
-> Note: new repositories in Github now uses "main" instead of "master"
+Create new repository -> Settings -> Deploy Key -> Add our new public key there
+
+### 2. Install NodeJS on the jenkins server
+
+Because we are using the same Jenkins master server to do the build/deploy and for our NodeJS app, we have
+to run `npm install`, we need to install NodeJS on the Jenkins server
+
+I will make the Ansible playbook to install it automatically and share it, for now, let's install it
+manually
+
+On Jenkins server
+```
+curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt-get install -y nodejs gcc g++ make
+```
+
+### 3. Create the Jenkinsfile
+
+
+### 4. Give Jenkins ssh access to the NodeJS VMs
+
+### 5. Create the Pipeline off of the Jenkinsfile
+

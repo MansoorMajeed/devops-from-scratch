@@ -1,4 +1,4 @@
-# Installing and setting up Jenkins
+# Installing and setting up Jenkins - Simple Pipeline Intro
 
 For this, we are not gonna use Docker, we are gonna go the old way and install it on a 
 VM
