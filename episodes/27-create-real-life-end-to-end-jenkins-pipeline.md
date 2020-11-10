@@ -4,15 +4,14 @@ So far we have a Jenkins installation up and running. We don't have much else go
 
 ## Our Goal
 
-We want to automatically test and deploy our NodeJS application. The application is living in a git
+We want to automatically test and deploy our [NodeJS application](https://github.com/MansoorMajeed/devops-nodejs-demo-app). The application is living in a git
 repository.
 
 With this video, we will be creating a full pipeline that will:
 
-1. Trigger on a commit to the `develop` or `master` branch
+1. Trigger on a commit to the `master` branch
 2. Run some tests
-3. Deploy it to a development environment or production env depending on the branch
-
+3. Deploy it
 
 
 ## Our NodeJS app setup
@@ -25,7 +24,8 @@ Before we automate our deploys, first let's make sure that it works fine doing m
 
 ### 1. Review Current setup
 
-I have kept the demo app here too in this same repo : [../demo-apps/nodejsapp](../demo-apps/nodejsapp)
+
+The NodeJS demo app is here https://github.com/MansoorMajeed/devops-nodejs-demo-app
 
 This is our original deploy script
 
