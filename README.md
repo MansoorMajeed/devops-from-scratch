@@ -40,3 +40,5 @@ Nothing here (yet)
 [25. DevOps and Continuous Integration/Deployment/Delivery](episodes/25-devops-ci-cd.md)
 
 [26. Installing and setting up Jenkins - Simple Pipeline Intro](episodes/26-jenkins-install-first-pipeline.md)
+
+[27. Creating an end to end Jenkins pipeline for a NodeJS application](episodes/27-create-real-life-end-to-end-jenkins-pipeline.md)
