@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/buster64"
+
+  config.vm.box_check_update = false
+
+  config.vm.network "private_network", ip: "192.168.33.21"
+  config.vm.hostname = 'wordpress'
+
+  config.vm.provider "virtualbox" do |vb|
+     vb.memory = "512"
+  end
+  config.vm.provision "shell", inline: <<-SHELL
+     apt-get update
+      echo "Adding ssh key"
+      echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA5Xv55ZTwhBiXvTpsLUyrIghNs1wudPGLDeJ5pUTingJwwPizczSNwui+1FYKRs0UGjAGruUHYboiUOhJ37DZIWWJR8wKg10b+V/Uxv3b0xbV87dd7suZiUgPnK7y24IyCfelGD//dRmePQVbaszcOhctJyeJNgKigqc0MUEYaJWBQPfwN6TuBBSMsX4eDvdjJ0WQYCCzXU0SScZnwxtyozstizA+AzzsWmcZsXzfkNsxgNtKwLNTJ3z8/IQZlVIMt9RyRIF7U8EuuPfRYsmm63KIU2keBSvNb/02m4MDitvu3WXI7UdidXBYdwU0LZiuHGXRAsSILvPIAJv1zQYT' >> /home/vagrant/.ssh/authorized_keys
+  SHELL
+end
