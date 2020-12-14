@@ -118,26 +118,6 @@ Make sure php7.4-fpm is running
 sudo systemctl status php7.4-fpm
 ```
 
-## Updating hosts file
-
-I will be adding an entry in my hosts file to point `wordpress.devops.esc.sh` to the IP address of the VM.
-Make sure you do that. 
-
-Add a new line with (Change where needed)
-```
-192.168.33.21 wordpress.devops.esc.sh
-```
-
-### Linux/Mac
-
-In Linux/Mac, it's as simple as editing `/etc/hosts` as root
-
-### Windows
-
-1. Open Notepad as administrator
-2. Open > c:\Windows\System32\Drivers\etc\hosts
-3. Add the entry as above
-
 
 ## Nginx
 
@@ -185,8 +165,28 @@ Reload Nginx
 ```
 sudo systemctl reload nginx
 ```
+## Updating hosts file
 
-### Testing if Nginx/PHP-FPM works
+I will be adding an entry in my hosts file to point `wordpress.devops.esc.sh` to the IP address of the VM.
+Make sure you do that. 
+
+Add a new line with (Change where needed)
+```
+192.168.33.21 wordpress.devops.esc.sh
+```
+
+### Linux/Mac
+
+In Linux/Mac, it's as simple as editing `/etc/hosts` as root
+
+### Windows
+
+1. Open Notepad as administrator
+2. Open > c:\Windows\System32\Drivers\etc\hosts
+3. Add the entry as above
+
+
+## Testing if Nginx/PHP-FPM works
 
 Before we install Wordpress, let's make sure that our nginx/php installation works as expected
 
