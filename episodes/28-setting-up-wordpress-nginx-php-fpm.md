@@ -17,7 +17,7 @@ More about MySQL :
 
 ```bash
 sudo apt update
-sudo apt install mysql-server
+sudo apt install mariadb-server
 ```
 
 2. Secure the installation
