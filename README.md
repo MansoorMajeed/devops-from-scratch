@@ -42,3 +42,5 @@ Nothing here (yet)
 [26. Installing and setting up Jenkins - Simple Pipeline Intro](episodes/26-jenkins-install-first-pipeline.md)
 
 [27. Creating an end to end Jenkins pipeline for a NodeJS application](episodes/27-create-real-life-end-to-end-jenkins-pipeline.md)
+
+[28. Setting up WordPress using Nginx and PHP-FPM on Debian](episodes/28-setting-up-wordpress-nginx-php-fpm.md)
