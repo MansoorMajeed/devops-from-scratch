@@ -179,3 +179,20 @@ service sensu-agent start
 By now, the agent should have automatically configured itself and is talking to the sensu-backend. 
 
 Sensu keepalives are the heartbeat mechanism used to ensure that all registered agents are operating and can reach the Sensu backend. To confirm that the agent is registered with Sensu and is sending keepalive events, open the entity page in the Sensu web UI or run `sensuctl entity list`
+
+## Verify an example event
+
+```
+curl -X POST \
+-H 'Content-Type: application/json' \
+-d '{
+  "check": {
+    "metadata": {
+      "name": "check-mysql-status"
+    },
+    "status": 1,
+    "output": "could not connect to mysql"
+  }
+}' \
+http://localhost:3031/events
+```
