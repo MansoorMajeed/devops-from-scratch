@@ -45,6 +45,12 @@ Nothing here (yet)
 
 [28. Setting up WordPress using Nginx and PHP-FPM on Debian](episodes/28-setting-up-wordpress-nginx-php-fpm.md)
 
+[29. Recap](episodes/29-recap.md)
+
+[30. VM Monitoring #1 - Introduction to monitoring](episodes/30-infrastructure-monitoring-intro.md)
+
+[31. VM Monitoring #2 - Getting started with Sensu Go for monitoring](episodes/31-monitoring-1-installing-sensu.md)
+
 
 
 ## Videos
@@ -124,6 +130,13 @@ Nothing here (yet)
 [23. How does TLS/SSL work](https://www.youtube.com/watch?v=pc5Xf9uuvwE&list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14&index=24)
 
 [24. Securing a website with a free SSL certificate from Let'sEncrypt](https://www.youtube.com/watch?v=NRJIhc3aQn0&list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14&index=25)
+
+### Monitoring in Virtual Machines
+
+[30. Monitoring #1 - Introduction to monitoring]()
+
+[31. Monitoring #2 - Setting up sensu]()
+
 
 
 ## Videos, Categorized Again
