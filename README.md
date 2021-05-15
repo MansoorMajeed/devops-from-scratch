@@ -47,9 +47,9 @@ Nothing here (yet)
 
 [29. Recap](episodes/29-recap.md)
 
-[30. VM Monitoring #1 - Introduction to monitoring](episodes/30-infrastructure-monitoring-intro.md)
+[30. VM Monitoring #1 - Introduction to monitoring](episodes/30-monitoring-1-infrastructure-monitoring-intro.md)
 
-[31. VM Monitoring #2 - Getting started with Sensu Go for monitoring](episodes/31-monitoring-1-installing-sensu.md)
+[31. VM Monitoring #2 - Getting started with Sensu Go for monitoring](episodes/31-monitoring-2-installing-sensu.md)
 
 
 
