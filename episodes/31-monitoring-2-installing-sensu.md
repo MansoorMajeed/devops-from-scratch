@@ -1,4 +1,4 @@
-# Getting started with VM monitoring using Sensu
+# VM Monitoring #2 - Getting started with VM monitoring using Sensu
 
 In the previous video we discussed about what monitoring is and what all need to be
 monitored. In this one we will be setting up monitoring using Sensu.

@@ -1,4 +1,4 @@
-# System Resource Monitoring Using Sensu
+# VM Monitoring #3 - System Resource Monitoring Using Sensu
 
 In the [monitoring introduction video](30-monitoring-1-infrastructure-monitoring-intro.md) we discussed about what are
 the different types of resources we should be monitoring to keep an eye on the state of our systems.
@@ -120,3 +120,47 @@ Every Sensu agent has a defined set of subscriptions that determine which checks
 
 Let's call our subscription that has cpu check as "system", which makes sense since it is a system resource
 
+We need to update our entity (our wordpress server) and include the "system" subscription
+
+```
+sensuctl entity list
+sensuctl entity update <entity_name>
+```
+
+For Entity Class, press enter.
+For Subscriptions, type system,webserver and press enter.
+
+### 3. Creating the check
+
+```
+sensuctl check create check_cpu \
+--command 'check-cpu.rb -w 75 -c 90' \
+--interval 30 \
+--subscriptions system \
+--runtime-assets cpu-checks-plugins,sensu-ruby-runtime
+```
+This creates a check which will:
+ - Use the `check-cpu.rb` script from the asset `cpu-checks-plugins` with warning 75% and critical at 90% CPU usage
+ - The subscription is system
+ - Runs every 30 seconds
+
+
+Since we have created the check with subscription as `system`, if in any future if we create a new server and add it to
+sensu with the subscription `system`, then that server will also automatically execute these checks.
+
+
+
+### 4. Verifying
+
+We can verify our brand new check
+```
+sensuctl check info check_cpu --format yaml
+```
+
+The Sensu agent uses websockets to communicate with the Sensu backend, sending event data as JSON messages. As your checks run, the Sensu agent captures check standard output (STDOUT) or standard error (STDERR). This data will be included in the JSON payload the agent sends to your Sensu backend as the event data.
+
+It might take a few moments after you create the check for the check to be scheduled on the entity and the event to return to Sensu backend. Use sensuctl to view the event data and confirm that Sensu is monitoring CPU usage:
+
+```
+sensuctl event list
+```

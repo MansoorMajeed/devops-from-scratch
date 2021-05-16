@@ -1,4 +1,4 @@
-# Introduction to Infrastructure monitoring
+# VM Monitoring #1 - Introduction to Infrastructure monitoring
 
 We have multiple "servers" in our infrastructure. And we need to know if all of them
 are doing well. We cannot check each of them manually to verify their health. This
