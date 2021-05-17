@@ -128,7 +128,7 @@ sensuctl entity update <entity_name>
 ```
 
 For Entity Class, press enter.
-For Subscriptions, type system,webserver and press enter.
+For Subscriptions, type system and press enter.
 
 ### 3. Creating the check
 
