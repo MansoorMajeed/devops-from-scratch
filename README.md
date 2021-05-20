@@ -51,6 +51,9 @@ Nothing here (yet)
 
 [31. VM Monitoring #2 - Getting started with Sensu Go for monitoring](episodes/31-monitoring-2-installing-sensu.md)
 
+[32. VM Monitoring #3 - System Resource Monitoring](episodes/32-monitoring-3-resource-usage-monitoring.md)
+
+[33. VM Monitoring #4 - Monitoring a webserver](episodes/33-monitoring-4-webserver-monitoring.md)
 
 
 ## Videos
