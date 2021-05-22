@@ -99,8 +99,8 @@ spec:
 
 We need to update the following
 
-- `-f` : Sender email -> Your new gmail account ( esc.sh.alerts@gmail.com )
-- `-t` : Recipient email -> where you want the alerts to go ( mansoor@esc.sh )
+- `-f` : Sender email -> Your new gmail account
+- `-t` : Recipient email -> where you want the alerts to go
 - `-s` : SMTP Server -> `smtp.gmail.com`
 - `-u` : Gmail username
 - `-p` : Gmail password / app password if you use 2FA for your new account
