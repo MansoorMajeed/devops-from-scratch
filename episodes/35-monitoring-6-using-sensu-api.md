@@ -20,6 +20,8 @@ curl -u 'admin:password' http://192.168.33.30:8080/auth
 This should give you an access token, copy it
 These tokens are only valid for 15 minutes, you need to refresh them often
 
+
+Now we will use the events api to get a list of all the events. More about events api [here](https://docs.sensu.io/sensu-go/latest/api/events/)
 ```
 curl -H "Authorization: Bearer <access_token>" \
 http://192.168.33.30:8080/api/core/v2/namespaces/default/events
