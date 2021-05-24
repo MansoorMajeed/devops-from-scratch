@@ -101,7 +101,7 @@ We need to update the following
 
 - `-f` : Sender email -> Your new gmail account
 - `-t` : Recipient email -> where you want the alerts to go
-- `-s` : SMTP Server -> `smtp.gmail.com`
+- `-s` : SMTP Serber -> smtp.gmail.com
 - `-u` : Gmail username
 - `-p` : Gmail password / app password if you use 2FA for your new account
 
@@ -109,3 +109,9 @@ And create it
 ```
 sensuctl create -f email-handler.yml
 ```
+
+
+## Exercises
+
+1. Add email handler to other checks
+2. Create a slack message alert handler
