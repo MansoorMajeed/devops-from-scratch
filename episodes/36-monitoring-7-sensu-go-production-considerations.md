@@ -10,7 +10,7 @@ we need fail over, better security etc
 
 In this video/notes, I will be discussing what all to consider when you move your sensu deployment to production
 
-### Clustered deployments
+## Clustered deployments
 
 Having a single host is not a good idea in a production environment.  
 
@@ -26,9 +26,13 @@ can try yourself
 2. When a new server comes online, this should get applied, and the server be registered with sensu-backend along with
 predefined set of checks ready to go, without human intervention.
 
+## TLS for etcd
 
-## About using sensu to monitor autoscaled VMs
+Reconfiguring a Sensu cluster for TLS post-deployment will require resetting all etcd cluster members, resulting in the loss of all data. So, when you are creating a production sensu setup, keep this in mind. You may want to enable TLS in the beginning itself
 
-It is possible that sensu might be monitoring some of the autoscaled servers in your infrastructure, if that is the case,
-you might want to make use of sensu API and remove each host before they are scaled down to avoid unnecessary alerts
+## TLS for Sensu UI and API
+
+We did not use any kind of TLS in our sensu setup. But when it comes to a production setup, we definitely need TLS.
+You should use something like an Nginx proxy in front of the sensu UI and configure TLS in the Nginx server so that
+the sensu UI, API etc are behind TLS. You should not be sending credentials over plain text
 
