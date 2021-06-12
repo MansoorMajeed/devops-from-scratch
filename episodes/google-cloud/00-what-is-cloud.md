@@ -1,5 +1,7 @@
 # Google Cloud #1 - What is Cloud
 
+Video : [HERE](https://www.youtube.com/watch?v=YDA6DBWxOMc)
+
 What is cloud? The term `cloud` is mostly used as a marketing term. It simply means servers and services rented
 from a provider.
 
@@ -58,4 +60,3 @@ I personally prefer Google Cloud because how well put the service is in comparis
 - Can scale up/down to meet our needs (Adding more/less servers)
 - Can create complex infrastructure
 - Easier to manage than a datacenter
-- 
