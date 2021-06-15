@@ -1,4 +1,4 @@
-# Hosting a simple website on Google Compute Engine - Our first VM
+# Google Cloud #2 - Hosting a simple website on Google Compute Engine - Our first VM
 
 ## Foreword
 
