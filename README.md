@@ -47,6 +47,8 @@ Nothing here (yet)
 
 [29. Recap](episodes/29-recap.md)
 
+### VM Monitoring
+
 [30. VM Monitoring #1 - Introduction to monitoring](episodes/30-monitoring-1-infrastructure-monitoring-intro.md)
 
 [31. VM Monitoring #2 - Getting started with Sensu Go for monitoring](episodes/31-monitoring-2-installing-sensu.md)
@@ -55,7 +57,21 @@ Nothing here (yet)
 
 [33. VM Monitoring #4 - Monitoring a webserver](episodes/33-monitoring-4-webserver-monitoring.md)
 
+[34. VM Monitoring #5 - Receiving email alerts](episodes/34-monitoring-5-getting-email-alerts.md)
 
+[35. VM Monitoring #6 - Using Sensu API](episodes/35-monitoring-6-using-sensu-api.md)
+
+[36. VM Monitoring #7 - Sensu Go in Production](episodes/36-monitoring-7-sensu-go-production-considerations.md)
+
+### Google Cloud
+
+[1. What is Cloud](episodes/google-cloud/01-what-is-cloud.md)
+
+[2. Simple website in Google Cloud](episodes/google-cloud/02-launching-first-vm.md)
+
+[3. Instance template and static IP](episodes/google-cloud/03-instance-templates-static-ip.md)
+
+[4. VPC Networks and firewall rules](episodes/google-cloud/04-vpc-networks.md)
 
 ## Videos
 
