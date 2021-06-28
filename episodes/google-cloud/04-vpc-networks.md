@@ -46,3 +46,7 @@ Now we can create firewall rules saying
 
 1. allow `nginx-proxy` to talk to `webapp` on port `80` over protocol `tcp`
 2. allow `webapp` to talk to `database` on port `3306` over protocol `tcp`
+
+> We can use source and target tags for firewall rules, but this is only applicable for internal traffic
+> It does not work for external traffic
+
