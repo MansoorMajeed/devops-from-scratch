@@ -122,7 +122,7 @@ Jenkins should load now, but on http only.
 ## Step 9 - Configuring SSL
 
 There is a dedicated document for fetching and configuring SSL with Nginx with all the necessary
-documents. Go [HERE](setting-up-letsencrypt-ssl-with-nginx.md)
+documents. Go [HERE](24-securing-nginx-free-ssl-letsencrypt.md)
 
 Come back here after that.
 
