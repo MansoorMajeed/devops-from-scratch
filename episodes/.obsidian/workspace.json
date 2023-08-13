@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "containers/01-Introduction-to-containers.md",
+                "file": "containers/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e818750197961d23",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "containers/02-a-practical-example.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,9 +98,9 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "containers/01-Introduction-to-containers.md",
-                "collapseAll": false,
-                "extraContext": false,
+                "file": "containers/02-a-practical-example.md",
+                "collapseAll": true,
+                "extraContext": true,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "containers/01-Introduction-to-containers.md",
+                "file": "containers/02-a-practical-example.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,11 +138,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "containers/01-Introduction-to-containers.md"
+                "file": "containers/02-a-practical-example.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -147,10 +161,11 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "704a5d0c99437cb4",
+  "active": "e818750197961d23",
   "lastOpenFiles": [
-    "containers/README.md",
     "containers/01-Introduction-to-containers.md",
+    "containers/02-a-practical-example.md",
+    "containers/README.md",
     "diagrams.md",
     "containers/diagrams/containers-vs-virtualmachines.png",
     "containers/diagrams/containers-vs-virtualmachines.excalidraw.md",

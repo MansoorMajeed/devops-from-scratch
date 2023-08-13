@@ -25,9 +25,27 @@ Then why are we talking about containers, why are they so important?
 1. We can solve a bunch of issues using Virtual Machine images : There are tools such as [Packer](https://www.packer.io/) that will allow us to package a virtual machine image with everything we need. This does indeed solve a lot of problems in terms of dependency management, consistency etc.
 2. Containers
 
-### Containers vs Virtual Machines
+## Containers vs Virtual Machines
 
 ![Containers vs VMs](diagrams/containers-vs-virtualmachines.png)
 
+
+#### Virtual Machines (VMs)
+
+- **Full OS**: Each VM runs a full OS instance, including kernel and user space.
+- **Resource Intensive**: Requires more resources due to multiple OS instances.
+- **Size**: Disk images are often several gigabytes.
+- **Boot-up Time**: Slower, as it involves booting up an entire OS.
+- **Isolation**: Complete isolation, as each VM is separated at the hypervisor level.
+- **Management**: Managed by hypervisors (e.g., VMware, Hyper-V).
+
+#### Containers
+
+- **Shared OS**: All containers share the **host OS kernel** but have isolated user spaces.
+- **Lightweight**: Requires fewer resources, as only the application and its dependencies are packaged.
+- **Size**: Containers can be just tens of MBs in size (or even smaller).
+- **Boot-up Time**: Near-instantaneous start-up.
+- **Isolation**: Process-level isolation using namespaces and cgroups.
+- **Management**: Managed by container runtimes (e.g., Docker, containerd).
 
 
