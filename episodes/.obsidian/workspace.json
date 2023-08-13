@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "3111c8310292ea36",
+        "id": "9866e648376086f7",
         "type": "tabs",
         "children": [
           {
-            "id": "474957b3d3a7af4f",
+            "id": "704a5d0c99437cb4",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -16,16 +16,6 @@
                 "file": "containers/01-Introduction-to-containers.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "c81f0ed0b9ac856c",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "containers/diagrams/containers-vs-virtualmachines.excalidraw.md"
               }
             }
           }
@@ -79,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 419.5
   },
   "right": {
     "id": "3112a06dd2bbf877",
@@ -157,11 +147,13 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "474957b3d3a7af4f",
+  "active": "704a5d0c99437cb4",
   "lastOpenFiles": [
-    "containers/diagrams/containers-vs-virtualmachines.excalidraw.md",
+    "containers/README.md",
     "containers/01-Introduction-to-containers.md",
-    "containers/diagrams",
-    "containers/README.md"
+    "diagrams.md",
+    "containers/diagrams/containers-vs-virtualmachines.png",
+    "containers/diagrams/containers-vs-virtualmachines.excalidraw.md",
+    "containers/diagrams"
   ]
 }

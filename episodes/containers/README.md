@@ -4,7 +4,7 @@
 ## Outline
 
 
-### [1. Introduction to Containerization](01-Introduction-to-containers)
+### [1. Introduction to Containerization](01-Introduction-to-containers.md)
 
 
 - What is containerization and the problem it solves

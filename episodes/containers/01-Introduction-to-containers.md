@@ -27,4 +27,7 @@ Then why are we talking about containers, why are they so important?
 
 ### Containers vs Virtual Machines
 
-![[containers-vs-virtualmachines.excalidraw]]
+![Containers vs VMs](diagrams/containers-vs-virtualmachines.png)
+
+
+
