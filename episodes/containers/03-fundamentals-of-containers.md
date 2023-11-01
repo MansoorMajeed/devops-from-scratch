@@ -44,7 +44,7 @@ Read more about namespaces [HERE](https://man7.org/linux/man-pages/man7/namespac
 Namespaces are a way to achieve this isolation we talked about. There are different
 types of namespaces that achieves these different goals such as process, network isolation
 
-A namespace wraps a global system resource in an abstraction that
+       A namespace wraps a global system resource in an abstraction that
        makes it appear to the processes within the namespace that they
        have their own isolated instance of the global resource.  Changes
        to the global resource are visible to other processes that are
@@ -58,13 +58,42 @@ Processes in different MNT namespaces can have different views of the filesystem
 
 ##### b. UTS (UNIX Time-Sharing) namespaces 
 
+Isolates two system identifiers: the hostname and the NIS domain name.
+This allows each container to have its own hostname.
 
 ##### c. IPC (InterProcess Communication) Namespaces
 
+IPC namespaces in Linux isolate inter-process communication mechanisms, ensuring 
+processes in different namespaces cannot directly communicate using shared memory, 
+semaphores, or message queues. 
+This is especially valuable in containerized environments to prevent interference 
+between instances. 
+
+Essentially, it's like giving each container its own private communication channel.
 
 ##### d. PID (Process ID) Namespaces
 
+Isolates the process ID number space. This means that processes in different PID 
+namespaces can have the same PID. For instance, multiple containers can each have 
+its own "PID 1".
 
 ##### e. NET (Network) Namespaces
 
+Isolates network devices, IP addresses, IP routing tables, port numbers, etc. 
+A process in one NET namespace can't see or directly communicate with network 
+devices or local network resources of another namespace.
 
+#### 2. Control Groups (Cgroups)
+
+Cgroups control how much CPU, memory, network bandwidth, and disk I/O can be used by the processes within a container. This ensures that a single container cannot starve others of resources.
+
+Example: If you have a database and a web server running in separate containers on the same host, you can allocate more memory to the database and limit the CPU usage of the web server to ensure balanced performance.
+
+
+#### 3. Union File Systems
+
+UnionFS allows layers in container images. Multiple containers can share the same base image layer, while each has its own unique layer for customized files and changes. This saves space and aids in fast container spin-up times.
+
+#### 4. Capabilities
+
+Capabilities in Linux split the privileges traditionally associated with root into distinct units, allowing finer-grained control over permissions. Instead of granting a process all-or-nothing "root" access, specific capabilities like network administration or file ownership changes can be assigned individually. This approach enhances security by limiting the potential impact of privilege escalation. In essence, capabilities allow a more nuanced delegation of power and responsibilities to processes on a Linux system.
