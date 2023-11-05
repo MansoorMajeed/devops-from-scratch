@@ -1,5 +1,7 @@
 # Creating an end to end Jenkins pipeline for a NodeJS application
 
+Video [HERE](https://www.youtube.com/watch?v=KpAKgrBA8mY&list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14&index=28)
+
 So far we have a Jenkins installation up and running. We don't have much else going on.
 
 ## Our Goal
