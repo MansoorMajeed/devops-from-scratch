@@ -1,0 +1,127 @@
+# Installing MiniKube
+
+MiniKube is local Kubernetes
+
+1. Install and start Docker Desktop for your operating system
+2. Install minikube https://minikube.sigs.k8s.io/docs/start 
+
+## Install Kubectl
+
+Follow instructions https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+## Install JQ
+
+```
+sudo apt update
+sudo apt install jq
+```
+
+## Taking a look around
+
+List all pods across all namespaces
+```
+mansoor@debian:~$ kubectl get pods -A
+NAMESPACE     NAME                               READY   STATUS    RESTARTS      AGE
+kube-system   coredns-668d6bf9bc-85c62           1/1     Running   1 (17m ago)   21m
+kube-system   etcd-minikube                      1/1     Running   1 (17m ago)   21m
+kube-system   kube-apiserver-minikube            1/1     Running   1 (17m ago)   21m
+kube-system   kube-controller-manager-minikube   1/1     Running   1 (17m ago)   21m
+kube-system   kube-proxy-8cp4h                   1/1     Running   1 (17m ago)   21m
+kube-system   kube-scheduler-minikube            1/1     Running   1 (17m ago)   21m
+kube-system   storage-provisioner                1/1     Running   2 (17m ago)   21m
+mansoor@debian:~$
+```
+
+
+See the raw response from the Kubernetes API server
+```
+kubectl get --raw /api/v1/namespaces/kube-system/pods  | jq | head -20
+```
+
+View the current kubectl client config
+```
+ kubectl config view
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /home/mansoor/.minikube/ca.crt
+    extensions:
+    - extension:
+        last-update: Tue, 21 Jan 2025 08:09:40 EST
+        provider: minikube.sigs.k8s.io
+        version: v1.35.0
+      name: cluster_info
+    server: https://192.168.49.2:8443
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    extensions:
+    - extension:
+        last-update: Tue, 21 Jan 2025 08:09:40 EST
+        provider: minikube.sigs.k8s.io
+        version: v1.35.0
+      name: context_info
+    namespace: default
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: /home/mansoor/.minikube/profiles/minikube/client.crt
+    client-key: /home/mansoor/.minikube/profiles/minikube/client.key
+```
+
+
+### Using curl against Kubernetes API server
+
+#### No authentication
+
+```
+mansoor@debian:~$ curl -k  https://localhost:32771/api/v1/namespaces/kube-system/pods
+{
+  "kind": "Status",
+  "apiVersion": "v1",
+  "metadata": {},
+  "status": "Failure",
+  "message": "pods is forbidden: User \"system:anonymous\" cannot list resource \"pods\" in API group \"\" in the namespace \"kube-system\"",
+  "reason": "Forbidden",
+  "details": {
+    "kind": "pods"
+  },
+  "code": 403
+}
+```
+
+#### With authentication
+
+```
+mansoor@debian:~$ curl -s --cacert ~/.minikube/ca.crt  \
+                        --cert /home/mansoor/.minikube/profiles/minikube/client.crt  \
+                        --key /home/mansoor/.minikube/profiles/minikube/client.key   \
+                        https://localhost:32771/api/v1/namespaces/kube-system/pods | jq | head -20
+{
+  "kind": "PodList",
+  "apiVersion": "v1",
+  "metadata": {
+    "resourceVersion": "1585"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "coredns-668d6bf9bc-85c62",
+        "generateName": "coredns-668d6bf9bc-",
+        "namespace": "kube-system",
+        "uid": "6d391263-14dc-4c63-be6a-714f7b199569",
+        "resourceVersion": "569",
+        "creationTimestamp": "2025-01-21T13:05:20Z",
+        "labels": {
+          "k8s-app": "kube-dns",
+          "pod-template-hash": "668d6bf9bc"
+        },
+        "ownerReferences": [
+```
+
