@@ -4,6 +4,10 @@ A video series for beginners
 Playlist is [HERE](https://www.youtube.com/playlist?list=PLxYCgfC5WpnsAg5LddfjlidAHJNqRUN14)
 
 
+## WIP : Kubernetes From Scratch
+
+Check [Kubernetes/README.md]
+
 ## Have a question?
 
 You can open an issue if you have something to discuss
